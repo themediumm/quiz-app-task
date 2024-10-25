@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'quiz/styles.css' %}">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form action="{% url 'result' %}" method="post">
+        {% csrf_token %}
+        {% for question in questions %}
+            <div class="question">
+                <h3>{{ question.text }}</h3>
+                {% for option in question.options.all %}
+                    <label>
+                        <input type="radio" name="question_{{ question.id }}" value="{{ option.id }}">
+                        {{ option.text }}
+                    </label><br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

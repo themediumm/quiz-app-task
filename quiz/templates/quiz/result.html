@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'quiz/styles.css' %}">
+    <title>Result</title>
+</head>
+<body>
+    <h1>Your Score</h1>
+    <div class="result">
+        <h3>You scored {{ score }} out of {{ total }}</h3>
+        <center><a href="{% url 'quiz' %}">Take the Quiz Again</a></center>
+    </div>
+       
+    
+
+</body>
+</html>
